@@ -17,6 +17,7 @@ import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 public class TicketOfferManagerTest {
+
     @Mock
     private TicketOfferRepository repository;
     @InjectMocks
@@ -40,12 +41,12 @@ public class TicketOfferManagerTest {
 
     @Test
     public void shouldFindAllLONROM() {
+
         TicketOffer[] returned = new TicketOffer[]{LR_1896, LR_1723, LR_717, SL_2215, SL_737, SL_818};
         doReturn(returned).when(repository).findAll();
 
         TicketOffer[] expected = new TicketOffer[]{LR_717, LR_1723, LR_1896};
         TicketOffer[] actual = manager.findAll("LON", "ROM");
-        Arrays.sort(actual);
         assertArrayEquals(expected, actual);
 
         verify(repository).findAll();
@@ -58,7 +59,6 @@ public class TicketOfferManagerTest {
 
         TicketOffer[] expected = new TicketOffer[]{SL_737, SL_818, SL_2215};
         TicketOffer[] actual = manager.findAll("STO", "LON");
-        Arrays.sort(actual);
         assertArrayEquals(expected, actual);
 
         verify(repository).findAll();
@@ -71,7 +71,6 @@ public class TicketOfferManagerTest {
 
         TicketOffer[] expected = new TicketOffer[]{};
         TicketOffer[] actual = manager.findAll("STO", "ROM");
-        Arrays.sort(actual);
         assertArrayEquals(expected, actual);
 
         verify(repository).findAll();

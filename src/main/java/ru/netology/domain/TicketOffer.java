@@ -16,8 +16,8 @@ public class TicketOffer implements Comparable<TicketOffer> {
     private int flightTime;
 
     @Override
-    public int compareTo(TicketOffer o) {
-        return price - o.price;
+    public int compareTo(TicketOffer ticketOffer) {
+        return this.price - ticketOffer.price;
     }
 }
 
